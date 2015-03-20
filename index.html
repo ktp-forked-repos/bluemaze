@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>BLUEMAZE</title>
+
+    <link rel="stylesheet" type="text/css" href="styles/spectrum.css" />
+    <link rel="stylesheet" type="text/css" href="styles/bluemaze.css">
+
+    <link rel="stylesheet" type="text/css" href="fonts/fonts.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-animation.min.css">
+
+    <script src="scripts/requestAnimFrame.js" type="text/javascript"></script>
+    <script src="scripts/illuminated.js" type="text/javascript"></script>
+    <script src="scripts/illuminated-json.js" type="text/javascript"></script>
+    <script src="scripts/1.7.2.jquery.min.js" type="text/javascript"></script>
+    <script src="scripts/spectrum-min.js" type="text/javascript"></script>
+    <script src="scripts/velocity.min.js" type="text/javascript"></script>
+    <script src="scripts/velocity.ui.min.js" type="text/javascript"></script>
+  </head>
+  <body>
+
+    <div id="loading">
+      <h1>Bluemaze</h1>
+      <div id="first">
+        <p>A heavy blue mist has settled. It shrouds a dangerous maze. Do you have the courage to brave the maze?</p>
+        <button id="next-trigger" data-story="next"><i class="fa fa-arrow-right faa-passing animated"></i></button>
+      </div>
+      <div id="next">
+        <p class="bold">Instructions:</p>
+        <p>Drag your light to the center of the maze to escape the blue mist. Don't let your light touch the walls or it will go out. You'll only have 45 seconds before the darkness descends!</p>
+        <button id="start-button">Start Game <i class="fa fa-arrow-right faa-passing animated"></i></button>
+      </div>
+      <h2 class="">Bluemaze</h2>
+    </div>
+
+    <div id="alert">
+      <i class="fa fa-exclamation-triangle fa-5x faa-flash animated"></i>
+      <h1>Your light has gone out!</h1>
+      <button class="restart-button">Go Back <i class="fa fa-arrow-right faa-passing animated"></i></button>
+    </div>
+
+    <div id="success">
+      <h1>Success!</h1>
+      <div>
+        <i class="fa fa-trophy faa-tada animated fa-5x"></i>
+        <span>It took you only</span>
+        <span id="score"></span>
+        <span>seconds!</span>
+      </div>
+      <button class="restart-button">Go Back <i class="fa fa-arrow-right faa-passing animated"></i></button>
+    </div>
+
+    <div id="colophon">
+      <a href="http://robertgonzal.es">http://robertgonzal.es</a>
+      <a href="https://twitter.com/robertgonzal_">@robertgonzal_</a>
+    </div>
+
+    <div id="wrapper">
+
+      <section id="demo">
+        <canvas id="viewport" width="2000px" height="1200px"></canvas>
+      </section>
+
+      <section id="timer">
+        <span id="count">45</span><span>s</span>
+        <p>Time Left</p>
+      </section>
+
+      <section id="toolbox">
+        <dl>
+          <dd>
+            
+            <a href="#"><img id="lamp" data-hoverText="Lamp" src="images/lamp.png" alt="Lamp" data-type="Light" data-class="Lamp" /></a>
+            <div class="click-hide">Click the lightbulb turn on your light</div>
+          </dd>
+        </dl>
+      </section>
+
+      <section id="controls">
+
+        <dl>
+          <div class="objectcontrols bind-selection"></div>
+        </dl>
+
+        <dl>
+          <div class="objectcontrols"></div>
+          <div class="lightcontrols bind-selection"></div>
+          <dd class="orientation">
+            <div class="input">
+              <canvas class="light-orientation" width="60" height="60"></canvas>
+            </div>
+          </dd>
+        </dl>
+
+        <dl>
+          <dd id="actions">
+            <button class="delete">Delete</button>
+            <button class="duplicate">Duplicate</button>
+          </dd>
+        </dl>
+
+      </section>
+
+      <script src="scripts/utils.js" type="text/javascript"></script>
+      <script src="scripts/hemi-orientation-picker.js" type="text/javascript"></script>
+      <script src="scripts/scene.js" type="text/javascript"></script>
+      <script src="app.js" type="text/javascript"></script>
+      <script type="text/javascript">
+
+        var interval;
+        window.timer = function(time){
+          var counter = time;
+          if (time == 'stop') {
+            return;
+          } else {
+            window.interval = setInterval(function() {
+              counter--;
+              if (counter >= 0) {
+                span = document.getElementById("count");
+                span.innerHTML = counter;
+                if (counter < 11) {
+                  $('#timer').addClass('red');
+                }
+              }
+              if (counter === 0) {
+                $('#alert').velocity("transition.expandIn");
+                setTimeout(function(){
+                  location.reload();
+                }, 10000);
+              } 
+            }, 1000);
+          }
+        };
+
+        $(document).on('ready',function(){
+
+          $('#start-button').on('click',function(){
+            $('#loading').velocity("transition.expandOut");
+          });
+
+          $('.restart-button').on('click',function(){
+            location.reload();
+          });
+
+          $('#next-trigger').on('click',function(){
+            $(this).velocity("transition.slideUpOut", { duration: 300 });
+            $('#next').velocity("transition.slideUpIn", { duration: 600 });
+            $('#colophon').velocity('transition.fadeOut');
+          });
+
+          $('#lamp').on('mousedown',function(){
+            $('#toolbox').velocity("transition.expandOut", { duration: 150 });
+            timer(45);
+          })
+
+        });
+
+      </script>
+
+  </body>
+</html>

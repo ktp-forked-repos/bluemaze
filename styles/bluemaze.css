@@ -1,0 +1,293 @@
+html,body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(44,62,80,1);
+  font-family: 'pluto';
+}
+#colophon {
+  color: white;
+  z-index: 9001;
+  display: block;
+  position: absolute;
+  height: 5vh;
+  width: 600px;
+  top: 95vh;
+  left: 0;
+  right: 0;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+#colophon a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+#logo {
+  display: block;
+  margin: 0 auto;
+}
+#alert {
+  z-index: 9000;
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: black;
+  text-align: center;
+}
+#loading {
+  z-index: 9000;
+  height: 100%;
+  width: 100%;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba(44,62,80,1);
+  text-align: center;
+}
+#success {
+  z-index: 9000;
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #2ecc71;
+  text-align: center;
+}
+#loading p {
+  text-align: center;
+  display: block;
+  max-width: 400px;
+  margin: 0 auto;
+  font-family: 'plutolight';
+  color: white;
+  font-size: 18px;
+  line-height: 32px;
+}
+#loading p.bold {
+  font-family: 'pluto';
+}
+#loading > div {
+  max-width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#loading div.hide {
+  display: none;
+}
+#first {
+  height: 75px;
+}
+#next-trigger {
+  top: 7px;
+  z-index: 9001;
+  position: relative;
+  display: block;
+}
+#next {
+  margin-top: 50px;
+  display: none;
+}
+#next button {
+  margin-top: 30px;
+}
+#next p.red {
+  margin-top: 10px;
+}
+#loading #you {
+  color: white;
+  text-align: center;
+}
+.click-hide {
+  position: absolute;
+  width: 250px;
+  left: 100px;
+  bottom: 20px;
+}
+#loading #you span {
+  display: block;
+}
+#loading #you i.fa-lightbulb-o {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+#loading #you span {
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 1px;
+}
+button {
+  margin: 0 auto;
+  position: relative;
+  margin-top: 20px;
+  font-size: 18px;
+  font-family: 'pluto';
+  width: 100%;
+}
+button i {
+  margin-left: 10px;
+  margin-right: -10px;
+}
+#loading,
+#alert,
+#success {
+  position: relative;
+  padding-top: 15vh;
+}
+#loading i {
+  color: white;
+}
+#loading h1 {
+  font-size: 60px;
+  color: white;
+  margin-top: 0;
+}
+#loading h2,
+#alert h2,
+#sucess h2 {
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-left: -9000px;
+  margin-right: -9000px;
+  position: absolute;
+  color: rgba(0,0,0,.05);
+  font-size: 400px;
+  letter-spacing: -10px;
+  text-transform: uppercase;
+  margin-top: 0;
+}
+#loading h1,
+#alert h1,
+#success h1 {
+  text-transform: uppercase;
+}
+#loading button,
+#alert button,
+#success button {
+  cursor: pointer;
+  font-size: 24px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: white;
+  padding: 10px 50px;
+  background-color: rgba(255,255,255,.1);
+  border: 3px solid transparent;
+  border-radius: 5px;
+  outline: none;
+}
+#loading button:hover,
+#alert button:hover,
+#success button:hover {
+  background-color: rgba(255,255,255,.8);
+  transition: background-color 100ms ease-in;
+}
+#loading button:hover {
+  color: rgba(44,62,80,1);
+}
+#loading button:hover i {
+  color: rgba(44,62,80,1);
+}
+#alert {
+  color: #e74c3c;
+}
+#alert button {
+  max-width: 400px;
+  color: #e74c3c;
+}
+#alert button:hover {
+  color: black;
+  background-color: #e74c3c;
+}
+#wrapper {
+  position: relative;
+  color: white;
+  text-transform: uppercase;
+  font-family: 'pluto';
+  font-size: 16px;
+  letter-spacing: 1px;
+}
+#toolbox {
+  position: absolute;
+  left: 5px;
+  top: 85vh;
+}
+#toolbox img {
+  width: auto;
+  height: 50px;
+}
+#toolbox div {
+
+}
+#actions {
+  display: none;
+}
+#timer {
+  height: 100px;
+  width: 100px;
+  display: block;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  color: white;
+  text-align: center;
+  background-color: rgba(255,255,255,.2);
+  border-radius: 5px;
+  padding: 40px;
+}
+#timer p {
+  margin: 0;
+}
+#timer span {
+  text-transform: lowercase;
+  font-size: 60px;
+}
+#loading p.red {
+  font-family: 'pluto';
+  color: #e74c3c;
+}
+#timer.red {
+  color: #e74c3c;
+}
+#success {
+  color: white;
+}
+#success h1 {
+  font-size: 60px;
+}
+#success button {
+  max-width: 400px;
+}
+
+#success #score {
+  font-size: 60px;
+}
+#success button:hover {
+  color: #2ecc71;
+}
+#success button:hover i {
+  color: #2ecc71;
+}
+
+#success i.fa-trophy {
+  display: block;
+  margin: 20px auto;
+}
